@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ✅ SEO Meta Tags -->
+  <meta name="description" content="Next Step Portal helps South African learners with university applications, APS score calculations, and mentorship by field." />
+  <meta name="keywords" content="Next Step Portal, APS calculator, university help, South Africa, study help, student portal, career guidance, nextstepportal" />
+  <meta name="author" content="Next Step Portal Team" />
+
+  <!-- ✅ Social Media Sharing Tags -->
+  <meta property="og:title" content="Next Step Portal" />
+  <meta property="og:description" content="Helping learners apply for university and succeed. APS calculator, mentorship, and resources." />
+  <meta property="og:image" content="IMG-45-nextstepportal.jpg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://your-vercel-site.vercel.app/" />
+
+  <title>Next Step Portal – Your University Guide</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f2f2f2; }
+    header {
+      background: url('IMG-45-nextstepportal.jpg') no-repeat center center / cover;
+      color: white;
+      padding: 60px 20px;
+      text-align: center;
+      position: relative;
+    }
+    nav { background: #004d80; padding: 10px; text-align: center; }
+    nav a { color: white; margin: 0 15px; text-decoration: none; font-weight: bold; }
+    section { padding: 20px; background: white; margin: 10px; border-radius: 8px; }
+    input, textarea, select { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px; }
+    button { padding: 10px 20px; background-color: #0077cc; color: white; border: none; border-radius: 4px; cursor: pointer; }
+    footer { text-align: center; padding: 10px; background: #eee; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Next Step Portal</h1>
+    <p>Your guide to university success</p>
+  </header>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#form">Help Form</a>
+    <a href="#aps">APS Calculator</a>
+    <a href="#documents">Documents</a>
+  </nav>
+
+  <section id="home">
+    <h2>Welcome to Next Step Portal</h2>
+    <p>We help learners apply to university with confidence. Whether you're pursuing science, commerce, engineering, or any other field — we're here to guide you.</p>
+  </section>
+
+  <section id="form">
+    <h2>Request Help</h2>
+    <form action="https://formspree.io/f/mwpqvpvb" method="POST">
+      <label for="name">Name:</label>
+      <input type="text" name="name" required />
+
+      <label for="email">Email:</label>
+      <input type="email" name="email" required />
+
+      <label for="field">Field of Study:</label>
+      <select name="field" required>
+        <option value="Science">Science</option>
+        <option value="Commerce">Commerce</option>
+        <option value="Engineering">Engineering</option>
+        <option value="Arts">Arts</option>
+        <option value="Law">Law</option>
+      </select>
+
+      <label for="message">What do you need help with?</label>
+      <textarea name="message" rows="4" required></textarea>
+
+      <button type="submit">Submit Request</button>
+    </form>
+  </section>
+
+  <section id="aps">
+    <h2>APS Calculator</h2>
+    <p>Enter your subject marks below (out of 100):</p>
+    <div id="aps-calculator">
+      <input type="number" placeholder="Subject 1" id="s1" />
+      <input type="number" placeholder="Subject 2" id="s2" />
+      <input type="number" placeholder="Subject 3" id="s3" />
+      <input type="number" placeholder="Subject 4" id="s4" />
+      <input type="number" placeholder="Subject 5" id="s5" />
+      <input type="number" placeholder="Subject 6" id="s6" />
+      <button onclick="calculateAPS()">Calculate APS</button>
+      <p id="aps-result"></p>
+    </div>
+  </section>
+
+  <section id="documents">
+    <h2>University Application Documents</h2>
+    <p>We will post important documents here as they become available.</p>
+    <ul>
+      <li><a href="#">UCT 2025 Prospectus (Coming Soon)</a></li>
+      <li><a href="#">NSFAS Application Guide (Coming Soon)</a></li>
+    </ul>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Next Step Portal. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function calculateAPS() {
+      const subjects = ["s1", "s2", "s3", "s4", "s5", "s6"];
+      let total = 0;
+      for (let id of subjects) {
+        const mark = parseInt(document.getElementById(id).value);
+        if (!isNaN(mark)) {
+          if (mark >= 80) total += 7;
+          else if (mark >= 70) total += 6;
+          else if (mark >= 60) total += 5;
+          else if (mark >= 50) total += 4;
+          else if (mark >= 40) total += 3;
+          else if (mark >= 30) total += 2;
+          else if (mark >= 0) total += 1;
+        }
+      }
+      document.getElementById("aps-result").innerText = "Your APS is: " + total;
+    }
+  </script>
+</body>
+</html>
